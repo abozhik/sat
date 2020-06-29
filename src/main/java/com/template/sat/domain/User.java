@@ -34,6 +34,9 @@ public class User implements UserDetails {
     @JoinColumn(name = "role_id")
     private Role role;
 
+    @Column(name = "enabled")
+    private boolean enabled;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -67,6 +70,6 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return enabled;
     }
 }

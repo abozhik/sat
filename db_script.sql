@@ -14,3 +14,15 @@ create table users
     role_id  integer references roles (role_id)
 );
 
+create table email_verification_token
+(
+    token_id  bigserial primary key,
+    token    varchar(512) unique not null,
+    user_id  bigint references users (user_id),
+    expiry_date timestamp
+);
+
+alter table users add column enabled boolean default false;
+
+
+
